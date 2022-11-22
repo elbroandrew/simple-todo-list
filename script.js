@@ -15,10 +15,21 @@ function remove_todo(button_pressed){
     todo_list.removeChild(button_pressed.parentNode);
 }
 
+class Todo extends HTMLLIElement{
+
+    constructor() {
+        super();
+        this.span_text = document.createElement("span");
+        this.span_text.innerText = "text3";
+        this.appendChild(this.span_text);
+    }
+}
+customElements.define('todo-li', Todo, { extends: 'li' });
 
 
-const add_todo = (element) => {
-    todo_list.appendChild(element);
+const add_todo = () => {
+    const li = document.createElement('li', { is: 'todo-li' });
+    todo_list.appendChild(li);
 }
 
 function change_todo_state(checkbox){
