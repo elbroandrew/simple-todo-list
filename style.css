@@ -3,18 +3,27 @@ body{
 }
 .container{
     text-align: center;
-    position: relative;
 }
 .todo-container{
 
 }
 
 .todo-container__list{
+    list-style-position: inside;
+    text-align: center;
+}
+
+.todo-container__list {
+
 
 }
 
-.todo-container__item {
+.todo-container__text{
+    padding-left: 10px;
+}
 
+.todo-container__item::marker {
+    text-align: left;
 }
 
 .todo-container__item::marker {

@@ -84,6 +84,6 @@ function change_todo_state(checkbox){
 - scss
 - rollup
 - backend routes
-- change marker (emoji)
+- unselect all
 
 */
