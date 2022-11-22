@@ -1,6 +1,11 @@
 body{
     margin: 0;
 }
+
+ul {
+    padding-inline-start: 0;
+}
+
 .container{
     text-align: center;
     margin-top: 10px;
@@ -9,11 +14,12 @@ body{
 
 }
 
-.input-block{
+.input-block, .todo-container__list{
     margin: 3rem 3rem;
 }
 .input-block__input-elem{
     width: 100%;
+    height: 30px;
     display: block;
 }
 .input-block__add-button-elem{
@@ -21,26 +27,29 @@ body{
 }
 
 .todo-container__list{
-    position: relative;
     list-style-type: none;
-    /*list-style-position: inside;*/
-    /*text-align: center;*/
+
+}
+
+.todo-container__item{
+    display: block;
+    position: relative;
 }
 
 .todo-container__item::before{
     font-family: 'Font Awesome 5 free';
     content: '\f35a';
     color: blue;
-    font-weight: 900;
+    font-weight: 400;
     position: absolute;
-    left: 10rem;
+    left: 0;
 }
 
 .todo-container__item:hover::before{
     font-family: 'Font Awesome 5 free';
     content: '\f35a';
     color: blue;
-    font-weight: 400;
+    font-weight: 900;
 }
 
 .todo-container__text{
