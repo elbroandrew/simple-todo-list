@@ -16,6 +16,11 @@ function remove_todo(button_pressed){
 }
 
 
+
+const add_todo = (element) => {
+    todo_list.appendChild(element);
+}
+
 function change_todo_state(checkbox){
     let text = checkbox.parentNode.querySelector(".todo-container__text");
     const remove_button = checkbox.parentNode.querySelector(".todo-container__button");
