@@ -79,12 +79,3 @@ function change_todo_state(checkbox){
     }
 }
 
-/*TODO:
-- local storage
-- scss
-- rollup
-- backend routes
-- unselect all
-- adaptive
-
-*/

@@ -10,3 +10,4 @@
 - rollup/webpack
 - sass
 - localStorage
+- github pages
