@@ -1,19 +1,10 @@
 
 
-const checkboxes = Array.from(document.getElementsByClassName("todo-container__checkbox"));
-
-function update_checkboxes(checkbox_list){
-    checkbox_list.forEach( c => {
-        c.toggle_class = toggle_class;
-    });
-}
-
 function toggle_class(element, from, to){
     element.classList.remove(from);
     element.classList.add(to);
 }
 
-update_checkboxes(checkboxes);
 
 const todo_list =  document.querySelector(".todo-container__list");
 
