@@ -6,18 +6,22 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="input-block">
-    <input type="text" class="input-block__input-elem" placeholder="todo">
-    <input type="button" value="add" name="add" class="input-block__add-button-elem" onclick="add_todo()">
+<div class="container">
+    <div class="input-block">
+        <input type="text" class="input-block__input-elem" placeholder="todo">
+        <input type="button" value="add" name="add" class="input-block__add-button-elem" onclick="add_todo()">
+    </div>
+    <div class="todo-container">
+        <ul class="todo-container__list">
+            <li class="todo-container__item">
+                <span class="todo-container__text todo-container__text_state_normal">text1</span>
+                <input class="todo-container__checkbox" type="checkbox" onclick="change_todo_state(this)">
+            </li>
+        </ul>
+    </div>
+    <button type="button" class="remove-todos-button" onclick="remove_all()">Remove All</button>
+    <button type="button" class="remove-selected-todos-button" onclick="remove_selected()">Remove Selected</button>
 </div>
-<div class="todo-container">
-    <ul class="todo-container__list">
-
-    </ul>
-</div>
-<button class="remove-todos-button" onclick="remove_all()">Remove All</button>
-<button class="remove-selected-todos-button" onclick="remove_selected()">Remove Selected</button>
-
 
 <script src="script.js"></script>
 </body>

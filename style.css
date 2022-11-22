@@ -1,5 +1,25 @@
+body{
+    margin: 0;
+}
+.container{
+    text-align: center;
+    position: relative;
+}
+.todo-container{
 
+}
 
+.todo-container__list{
+
+}
+
+.todo-container__item {
+
+}
+
+.todo-container__item::marker {
+    content: "*";
+}
 
 .todo-container__text_state_strikethrough{
     font-weight: 600;
@@ -13,6 +33,10 @@
 .todo-container__button_state_active{
     background-color: red;
     border: none;
+    display: none;
+}
+.todo-container__button{
+    display: none;
 }
 .todo-container__button_state_active:hover{
     cursor: pointer;

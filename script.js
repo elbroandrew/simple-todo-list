@@ -16,10 +16,6 @@ function toggle_class(element, from, to){
 const todo_list =  document.querySelector(".todo-container__list");
 
 
-function remove_todo(button_pressed){
-    todo_list.removeChild(button_pressed.parentNode);
-}
-
 function remove_all(){
     let todo_list = document.querySelector(".todo-container__list");
     while(todo_list.children.length > 0){
@@ -42,13 +38,8 @@ function create_todo() {
         input_checkbox.toggle_class = toggle_class;
         input_checkbox.classList.add("todo-container__checkbox");
         input_checkbox.setAttribute("onclick", "change_todo_state(this)");
-        const remove_button = document.createElement("button");
-        remove_button.innerText = "X";
-        remove_button.classList.add("todo-container__button", "todo-container__button_state_hidden");
-        remove_button.setAttribute("onclick", "remove_todo(this)");
         li.appendChild(span_text);
         li.appendChild(input_checkbox);
-        li.appendChild(remove_button);
 
         return li;
     }else{
@@ -88,5 +79,11 @@ function change_todo_state(checkbox){
     }
 }
 
+/*TODO:
+- local storage
+- scss
+- rollup
+- backend routes
+- change marker (emoji)
 
-
+*/
