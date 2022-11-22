@@ -7,17 +7,14 @@ checkbox_list.forEach( c => {
     }
 })
 
-console.log(checkbox_list[0])
 
 function pprint(checkbox){
     let text = checkbox.parentNode.querySelector(".todo-container__text");
     if (checkbox.checked){
-        checkbox.toggle_class(text, "todo-container__text_state_normal", "todo-container__text_state_strikethrough")
-        // text.classList.remove("todo-container__text_state_normal");
-        // text.classList.add("todo-container__text_state_strikethrough");
+        checkbox.toggle_class(text, "todo-container__text_state_normal", "todo-container__text_state_strikethrough");
+
     }else{
-        text.classList.remove("todo-container__text_state_strikethrough");
-        text.classList.add("todo-container__text_state_normal");
+        checkbox.toggle_class(text, "todo-container__text_state_strikethrough", "todo-container__text_state_normal")
     }
 }
 
