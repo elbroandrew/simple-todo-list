@@ -14,6 +14,6 @@
 
 }
 
-.todo-container__button_state_disabled{
-
+.todo-container__button_state_hidden{
+    display: none;
 }
