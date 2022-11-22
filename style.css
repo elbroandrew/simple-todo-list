@@ -9,6 +9,17 @@ body{
 
 }
 
+.input-block{
+    margin: 3rem 3rem;
+}
+.input-block__input-elem{
+    width: 100%;
+    display: block;
+}
+.input-block__add-button-elem{
+    display: block;
+}
+
 .todo-container__list{
     position: relative;
     list-style-type: none;
