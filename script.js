@@ -1,4 +1,5 @@
 
+
 let checkbox_list = Array.from(document.getElementsByClassName("todo-container__checkbox"))
 checkbox_list.forEach( c => {
     c.toggle_class = function(element, from, to){
@@ -6,6 +7,13 @@ checkbox_list.forEach( c => {
         element.classList.add(to);
     }
 });
+
+const todo_list = document.querySelector(".todo-container__list");
+
+
+function remove_todo(button_pressed){
+    todo_list.removeChild(button_pressed.parentNode);
+}
 
 
 function change_todo_state(checkbox){
@@ -20,4 +28,6 @@ function change_todo_state(checkbox){
         checkbox.toggle_class(remove_button, "todo-container__button_state_active", "todo-container__button_state_hidden")
     }
 }
+
+
 

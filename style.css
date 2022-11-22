@@ -11,8 +11,13 @@
 }
 
 .todo-container__button_state_active{
-
+    background-color: red;
+    border: none;
 }
+.todo-container__button_state_active:hover{
+    cursor: pointer;
+}
+
 
 .todo-container__button_state_hidden{
     display: none;
