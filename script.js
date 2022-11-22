@@ -1,4 +1,11 @@
+let input_field = document.querySelector(".input-block__input-elem");
 
+input_field.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        document.querySelector(".input-block__add-button-elem").click();
+    }
+});
 
 function toggle_class(element, from, to){
     element.classList.remove(from);
