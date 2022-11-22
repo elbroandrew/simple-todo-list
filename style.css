@@ -49,10 +49,10 @@ body{
 .todo-container__button_state_active{
     background-color: red;
     border: none;
-    display: none;
 }
+
 .todo-container__button{
-    display: none;
+
 }
 .todo-container__button_state_active:hover{
     cursor: pointer;
