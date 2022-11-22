@@ -15,21 +15,20 @@ function remove_todo(button_pressed){
     todo_list.removeChild(button_pressed.parentNode);
 }
 
-class Todo extends HTMLLIElement{
+function create_todo() {
+    const li = document.createElement('li');
+    const span_text = document.createElement("span");
+    span_text.innerText = "text3";
+    li.appendChild(span_text);
 
-    constructor() {
-        super();
-        this.span_text = document.createElement("span");
-        this.span_text.innerText = "text3";
-        this.appendChild(this.span_text);
-    }
+    return li;
+
 }
-customElements.define('todo-li', Todo, { extends: 'li' });
 
 
 const add_todo = () => {
-    const li = document.createElement('li', { is: 'todo-li' });
-    todo_list.appendChild(li);
+    const todo = create_todo();
+    todo_list.appendChild(todo);
 }
 
 function change_todo_state(checkbox){
