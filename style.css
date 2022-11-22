@@ -1,0 +1,11 @@
+
+
+
+.todo-container__text_state_strikethrough{
+    font-weight: 600;
+    text-decoration: line-through;
+}
+
+.todo-container__text_state_normal{
+
+}
