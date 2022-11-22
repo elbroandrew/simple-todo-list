@@ -29,32 +29,41 @@ function remove_all(){
     }
 }
 
+
 function create_todo() {
-    const li = document.createElement('li');
-    const span_text = document.createElement("span");
-    span_text.innerText = `${document.querySelector('.input-block__input-elem').value}`;
-    span_text.classList.add("todo-container__text", "todo-container__text_state_normal");
-    const input_checkbox = document.createElement("input");
-    input_checkbox.type = "checkbox";
-    input_checkbox.toggle_class = toggle_class;
-    input_checkbox.classList.add("todo-container__checkbox");
-    input_checkbox.setAttribute("onclick", "change_todo_state(this)");
-    const remove_button = document.createElement("button");
-    remove_button.innerText = "X";
-    remove_button.classList.add("todo-container__button", "todo-container__button_state_hidden");
-    remove_button.setAttribute("onclick", "remove_todo(this)");
-    li.appendChild(span_text);
-    li.appendChild(input_checkbox);
-    li.appendChild(remove_button);
+    const text_field = document.querySelector('.input-block__input-elem');
+    if (text_field.value.trim()){
+        const li = document.createElement('li');
+        const span_text = document.createElement("span");
+        span_text.innerText = text_field.value.trim();
+        text_field.value = "";
+        span_text.classList.add("todo-container__text", "todo-container__text_state_normal");
+        const input_checkbox = document.createElement("input");
+        input_checkbox.type = "checkbox";
+        input_checkbox.toggle_class = toggle_class;
+        input_checkbox.classList.add("todo-container__checkbox");
+        input_checkbox.setAttribute("onclick", "change_todo_state(this)");
+        const remove_button = document.createElement("button");
+        remove_button.innerText = "X";
+        remove_button.classList.add("todo-container__button", "todo-container__button_state_hidden");
+        remove_button.setAttribute("onclick", "remove_todo(this)");
+        li.appendChild(span_text);
+        li.appendChild(input_checkbox);
+        li.appendChild(remove_button);
 
-    return li;
-
+        return li;
+    }else{
+        alert("Input field must not be empty.");
+        text_field.value = "";
+    }
 }
 
 
 const add_todo = () => {
     const todo = create_todo();
-    todo_list.appendChild(todo);
+    if (todo){
+        todo_list.appendChild(todo);
+    }
 }
 
 function change_todo_state(checkbox){
