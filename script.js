@@ -85,5 +85,6 @@ function change_todo_state(checkbox){
 - rollup
 - backend routes
 - unselect all
+- adaptive
 
 */
