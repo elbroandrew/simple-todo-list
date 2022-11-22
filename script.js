@@ -22,8 +22,8 @@ function remove_todo(button_pressed){
 
 function remove_all(){
     let todo_list = document.querySelector(".todo-container__list");
-    for(let i = 0; i < todo_list.children.length; ){
-        todo_list.removeChild(todo_list.children[i])
+    while(todo_list.children.length > 0){
+        todo_list.removeChild(todo_list.lastChild);
     }
 }
 
@@ -32,6 +32,7 @@ function create_todo() {
     const text_field = document.querySelector('.input-block__input-elem');
     if (text_field.value.trim()){
         const li = document.createElement('li');
+        li.classList.add("todo-container__item");
         const span_text = document.createElement("span");
         span_text.innerText = text_field.value.trim();
         text_field.value = "";
@@ -56,6 +57,16 @@ function create_todo() {
     }
 }
 
+function remove_selected(){
+    let todo_list = document.querySelector(".todo-container__list");
+    //select all checkboxes
+    let selected_items = document.querySelectorAll(".todo-container__checkbox");
+    for(const checkbox of selected_items){
+        if(checkbox.checked){
+            todo_list.removeChild(checkbox.parentNode);
+        }
+    }
+}
 
 const add_todo = () => {
     const todo = create_todo();
