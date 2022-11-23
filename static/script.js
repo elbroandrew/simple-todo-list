@@ -24,16 +24,12 @@ function create_todo_from_localstorage(){
 }
 
 //just for test purposes
-localstorage_data.push("");
 localstorage_data.push("some text2");
 
 function update_localstorage(data){
     window.localStorage.setItem("todo_data", JSON.stringify(data));
 }
 
-function remove_from_localstorage(){
-    window.localStorage?.removeItem("todo_data");
-}
 
 update_localstorage(localstorage_data);
 create_todo_from_localstorage();
@@ -53,15 +49,41 @@ function toggle_class(element, from, to){
     element.classList.add(to);
 }
 
+function removeLocalstorageTodos(){
+    window.localStorage?.removeItem("todo_data");
+    localstorage_data = [];
+
+}
+
 function remove_all(){
     let todo_list = document.querySelector(".todo-container__list");
     while(todo_list.children.length > 0){
         todo_list.removeChild(todo_list.lastChild);
     }
+    removeLocalstorageTodos();
+
+}
+
+function removeTodoFromLocalstorage(todo){
+    let ls_data = JSON.parse(localStorage.getItem("todo_data"));
+    if (ls_data.length > 0){
+        let filtered = ls_data.filter( x => {
+            return x !== todo;
+        })
+        localstorage_data = filtered
+        update_localstorage(filtered[todo]);
+    }else{
+        removeLocalstorageTodos();
+    }
+
 }
 
 function remove_todo(button_pressed){
-    document.querySelector(".todo-container__list").removeChild(button_pressed.parentNode);
+    let parent_node = button_pressed.parentNode;
+    let todo_text = parent_node.querySelector(".todo-container__text").innerText.trim();
+    document.querySelector(".todo-container__list").removeChild(parent_node);
+    removeTodoFromLocalstorage(todo_text);
+
 }
 
 function create_todo(text){
