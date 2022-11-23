@@ -11,4 +11,6 @@
 - sass
 - ~~localStorage~~
 - ~~add new todo to localstorage~~
+- remove todo from local storage
 - github pages
+

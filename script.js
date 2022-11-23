@@ -1,7 +1,6 @@
 let input_field = document.querySelector(".input-block__input-elem");
 
 let localstorage_data = [];
-const todo_list =  document.querySelector(".todo-container__list");
 
 input_field.addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
@@ -43,7 +42,8 @@ create_todo_from_localstorage();
 const add_todo = () => {
     const todo = create_todo_from_input_field();
     if (todo){
-        todo_list.appendChild(todo);
+        //append to ul
+        document.querySelector(".todo-container__list").appendChild(todo);
     }
 }
 
@@ -61,7 +61,7 @@ function remove_all(){
 }
 
 function remove_todo(button_pressed){
-    todo_list.removeChild(button_pressed.parentNode);
+    document.querySelector(".todo-container__list").removeChild(button_pressed.parentNode);
 }
 
 function create_todo(text){
@@ -105,12 +105,11 @@ function create_todo_from_input_field() {
 }
 
 function remove_selected(){
-    let todo_list = document.querySelector(".todo-container__list");
     //select all checkboxes
     let selected_items = document.querySelectorAll(".todo-container__checkbox");
     for(const checkbox of selected_items){
         if(checkbox.checked){
-            todo_list.removeChild(checkbox.parentNode);
+            document.querySelector(".todo-container__list").removeChild(checkbox.parentNode);
         }
     }
 }
