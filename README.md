@@ -9,5 +9,5 @@
 - simple backend
 - rollup/webpack
 - sass
-- localStorage
+- ~~localStorage~~
 - github pages
