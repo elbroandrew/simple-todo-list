@@ -10,11 +10,18 @@ input_field.addEventListener("keypress", function(event) {
 });
 
 function create_todo_from_localstorage(){
-    if ("todo_data" in window.localStorage){
-        console.log(window.localStorage["todo_data"]);
-        console.log(JSON.parse(localStorage.getItem("todo_data")));
+    if (!"todo_data" in window.localStorage){
+        return
     }
+    const ls_data = JSON.parse(localStorage.getItem("todo_data"));
+    const ul = document.querySelector(".todo-container__list");
+    ls_data.forEach(item => {
+        console.log(item)
+        let li = create_todo(item);
+        ul.appendChild(li);
+    });
 }
+
 function push_to_localstorage(data){
     data.push("some, text");
     data.push("some text2");
@@ -24,6 +31,7 @@ function push_to_localstorage(data){
 function remove_from_localstorage(){
     window.localStorage?.removeItem("todo_data");
 }
+
 push_to_localstorage(localstorage_data);
 create_todo_from_localstorage();
 remove_from_localstorage();
