@@ -24,9 +24,11 @@ function create_todo_from_localstorage(){
     });
 }
 
-function push_to_localstorage(data){
-    data.push("");
-    data.push("some text2");
+//just for test purposes
+localstorage_data.push("");
+localstorage_data.push("some text2");
+
+function update_localstorage(data){
     window.localStorage.setItem("todo_data", JSON.stringify(data));
 }
 
@@ -34,9 +36,9 @@ function remove_from_localstorage(){
     window.localStorage?.removeItem("todo_data");
 }
 
-push_to_localstorage(localstorage_data);
+update_localstorage(localstorage_data);
 create_todo_from_localstorage();
-remove_from_localstorage();
+//remove_from_localstorage();
 
 const add_todo = () => {
     const todo = create_todo_from_input_field();
@@ -88,10 +90,13 @@ function text_field_is_empty(txt){
     return !!txt.trim();
 }
 
+
 function create_todo_from_input_field() {
     const text_field = document.querySelector('.input-block__input-elem');
     if (text_field_is_empty(text_field.value)){
         let todo = create_todo(text_field.value)
+        localstorage_data.push(text_field.value);
+        update_localstorage(localstorage_data);
         text_field.value = "";
         return todo;
     }
