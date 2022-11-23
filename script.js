@@ -1,6 +1,7 @@
 let input_field = document.querySelector(".input-block__input-elem");
 
 let localstorage_data = [];
+const todo_list =  document.querySelector(".todo-container__list");
 
 input_field.addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
@@ -16,14 +17,15 @@ function create_todo_from_localstorage(){
     const ls_data = JSON.parse(localStorage.getItem("todo_data"));
     const ul = document.querySelector(".todo-container__list");
     ls_data.forEach(item => {
-        console.log(item)
-        let li = create_todo(item);
-        ul.appendChild(li);
+        if (item){
+            let li = create_todo(item);
+            ul.appendChild(li);
+        }
     });
 }
 
 function push_to_localstorage(data){
-    data.push("some, text");
+    data.push("");
     data.push("some text2");
     window.localStorage.setItem("todo_data", JSON.stringify(data));
 }
@@ -35,11 +37,6 @@ function remove_from_localstorage(){
 push_to_localstorage(localstorage_data);
 create_todo_from_localstorage();
 remove_from_localstorage();
-
-
-
-
-const todo_list =  document.querySelector(".todo-container__list");
 
 const add_todo = () => {
     const todo = create_todo_from_input_field();
@@ -87,16 +84,19 @@ function create_todo(text){
     return li;
 }
 
+function text_field_is_empty(txt){
+    return !!txt.trim();
+}
+
 function create_todo_from_input_field() {
     const text_field = document.querySelector('.input-block__input-elem');
-    if (text_field.value.trim()){
+    if (text_field_is_empty(text_field.value)){
         let todo = create_todo(text_field.value)
         text_field.value = "";
         return todo;
-    }else{
-        alert("Input field must not be empty.");
-        text_field.value = "";
     }
+    alert("Input field must not be empty.");
+    text_field.value = "";
 }
 
 function remove_selected(){
