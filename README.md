@@ -10,5 +10,5 @@
 - rollup/webpack
 - sass
 - ~~localStorage~~
-- add new todo to localstorage
+- ~~add new todo to localstorage~~
 - github pages
