@@ -6,7 +6,7 @@
 - ~~custom markers~~
 - unselect all button
 - adaptive/responsive
-- simple backend
+- ~~simple backend~~
 - rollup/webpack
 - sass
 - ~~localStorage~~
