@@ -1,32 +1,19 @@
-let input_field = document.querySelector(".input-block__input-elem");
 
-
-(function clearInputClickOnPage(){
-    document.addEventListener('click', function (event){
-        document.querySelector(".input-block__input-elem").value = "";
-    })
-})()
-
-input_field.addEventListener("keypress", function(event) {
-    if (event.key === "Enter") {
-        event.preventDefault();
-        document.querySelector(".input-block__add-button-elem").click();
-    }
-});
-
-function create_todo_from_localstorage(){
-    if (!"todo_data" in window.localStorage){
-        return
-    }
-    const ls_data = JSON.parse(localStorage.getItem("todo_data"));
-    const ul = document.querySelector(".todo-container__list");
-    ls_data.forEach(item => {
-        if (item){
-            let li = create_todo(item);
-            ul.appendChild(li);
+(function textFieldSendOnEnterKey(){
+    document.querySelector(".input-block__input-elem").addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            document.querySelector(".input-block__add-button-elem").click();
         }
     });
-}
+})();
+
+// (function clearInputClickOnPage(){
+//     document.addEventListener('click', function (event){
+//         document.querySelector(".input-block__input-elem").value = "";
+//     })
+// })();
+
 
 
 const add_todo = () => {
@@ -58,24 +45,50 @@ function remove_todo(button_pressed){
     document.querySelector(".todo-container__list").removeChild(parent_node);
 }
 
+
+function create_elements(...tag_names_list){
+    let res = [];
+    for (let tag of tag_names_list){
+        res.push(document.createElement(`${tag}`));
+    }
+    return res;
+}
+
+function add_classes(elements){
+    for (let elem of elements){
+        if(elem.nodeName === "LI"){
+            elem.classList.add("todo-container__item");
+        }
+        else if(elem.nodeName === "SPAN"){
+            elem.classList.add("todo-container__text", "todo-container__text_state_normal");
+        }
+        else if(elem.nodeName === "INPUT") {
+            elem.classList.add("todo-container__checkbox");
+            elem.toggle_class = toggle_class;
+        }
+        else if(elem.nodeName === "BUTTON"){
+            elem.classList.add("todo-container__button", "todo-container__button_state_hidden");
+        }
+    }
+}
+
+function appendToLi(li, elements){
+    for (let e of elements){
+        li.appendChild(e);
+    }
+}
+
+
 function create_todo(text){
-    const li = document.createElement('li');
-    li.classList.add("todo-container__item");
-    const span_text = document.createElement("span");
-    span_text.innerText = text.trim();
-    span_text.classList.add("todo-container__text", "todo-container__text_state_normal");
-    const input_checkbox = document.createElement("input");
-    input_checkbox.type = "checkbox";
-    input_checkbox.toggle_class = toggle_class;
-    input_checkbox.classList.add("todo-container__checkbox");
-    input_checkbox.setAttribute("onclick", "change_todo_state(this)");
-    const remove_button = document.createElement("button");
-    remove_button.innerText = "X";
-    remove_button.classList.add("todo-container__button", "todo-container__button_state_hidden");
-    remove_button.setAttribute("onclick", "remove_todo(this)");
-    li.appendChild(span_text);
-    li.appendChild(input_checkbox);
-    li.appendChild(remove_button);
+    const list_of_elements = create_elements('li', 'span', 'input', "button");
+    add_classes(list_of_elements);
+    const [li, span, input, button] = list_of_elements;
+    span.innerText = text.trim();
+    input.type = "checkbox";
+    input.setAttribute("onclick", "change_todo_state(this)");
+    button.innerText = "X";
+    button.setAttribute("onclick", "remove_todo(this)");
+    appendToLi(li, span, input, button)
 
     return li;
 }

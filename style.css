@@ -39,7 +39,7 @@ ul {
 }
 
 .todo-container__item::before{
-    font-family: 'Font Awesome 5 free';
+    font-family: 'Font Awesome 5 free', serif;
     content: '\f35a';
     color: blue;
     font-weight: 400;
@@ -49,7 +49,7 @@ ul {
 }
 
 .todo-container__item:hover::before{
-    font-family: 'Font Awesome 5 free';
+    font-family: 'Font Awesome 5 free', serif;
     content: '\f35a';
     color: blue;
     font-weight: 900;
