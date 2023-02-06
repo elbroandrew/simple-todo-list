@@ -1,6 +1,6 @@
 let input_field = document.querySelector(".input-block__input-elem");
 
-let localstorage_data = [];
+// let localstorage_data = [];
 
 input_field.addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
@@ -24,16 +24,16 @@ function create_todo_from_localstorage(){
 }
 
 //just for test purposes
-localstorage_data.push("some text2");
+//localstorage_data.push("some text2");
 
 function update_localstorage(data){
     window.localStorage.setItem("todo_data", JSON.stringify(data));
 }
 
 
-update_localstorage(localstorage_data);
-create_todo_from_localstorage();
-//remove_from_localstorage();
+// update_localstorage(localstorage_data);
+// create_todo_from_localstorage();
+// //remove_from_localstorage();
 
 const add_todo = () => {
     const todo = create_todo_from_input_field();
@@ -51,7 +51,7 @@ function toggle_class(element, from, to){
 
 function removeLocalstorageTodos(){
     window.localStorage?.removeItem("todo_data");
-    localstorage_data = [];
+    // localstorage_data = [];
 
 }
 
@@ -70,7 +70,7 @@ function removeTodoFromLocalstorage(todo){
         let filtered = ls_data.filter( x => {
             return x !== todo;
         })
-        localstorage_data = filtered
+        // localstorage_data = filtered
         update_localstorage(filtered[todo]);
     }else{
         removeLocalstorageTodos();
@@ -82,7 +82,7 @@ function remove_todo(button_pressed){
     let parent_node = button_pressed.parentNode;
     let todo_text = parent_node.querySelector(".todo-container__text").innerText.trim();
     document.querySelector(".todo-container__list").removeChild(parent_node);
-    removeTodoFromLocalstorage(todo_text);
+    // removeTodoFromLocalstorage(todo_text);
 
 }
 
@@ -117,8 +117,8 @@ function create_todo_from_input_field() {
     const text_field = document.querySelector('.input-block__input-elem');
     if (text_field_is_empty(text_field.value)){
         let todo = create_todo(text_field.value)
-        localstorage_data.push(text_field.value);
-        update_localstorage(localstorage_data);
+        // localstorage_data.push(text_field.value);
+        // update_localstorage(localstorage_data);
         text_field.value = "";
         return todo;
     }
