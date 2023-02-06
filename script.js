@@ -54,20 +54,25 @@ function create_elements(...tag_names_list){
     return res;
 }
 
-function add_classes(elements){
-    for (let elem of elements){
-        if(elem.nodeName === "LI"){
-            elem.classList.add("todo-container__item");
+function add_attributes(elements, text){
+    for (let el of elements){
+        if(el.nodeName === "LI"){
+            el.classList.add("todo-container__item");
         }
-        else if(elem.nodeName === "SPAN"){
-            elem.classList.add("todo-container__text", "todo-container__text_state_normal");
+        else if(el.nodeName === "SPAN"){
+            el.classList.add("todo-container__text", "todo-container__text_state_normal");
+            el.innerText = text.trim();
         }
-        else if(elem.nodeName === "INPUT") {
-            elem.classList.add("todo-container__checkbox");
-            elem.toggle_class = toggle_class;
+        else if(el.nodeName === "INPUT") {
+            el.classList.add("todo-container__checkbox");
+            el.toggle_class = toggle_class;
+            el.type = "checkbox";
+            el.setAttribute("onclick", "change_todo_state(this)");
         }
-        else if(elem.nodeName === "BUTTON"){
-            elem.classList.add("todo-container__button", "todo-container__button_state_hidden");
+        else if(el.nodeName === "BUTTON"){
+            el.classList.add("todo-container__button", "todo-container__button_state_hidden");
+            el.innerText = "x";
+            el.setAttribute("onclick", "remove_todo(this)");
         }
     }
 }
@@ -78,25 +83,8 @@ function appendToLi(li, list1){
     }
 }
 
-function add_attributes(elements, text){
-    for(let el of elements){
-        if(el.nodeName === "SPAN"){
-            el.innerText = text.trim();
-        }
-        else if(el.nodeName === "INPUT") {
-            el.type = "checkbox";
-            el.setAttribute("onclick", "change_todo_state(this)");
-        }
-        else if(el.nodeName === "BUTTON"){
-            el.innerText = "x";
-            el.setAttribute("onclick", "remove_todo(this)");
-        }
-    }
-}
-
 function create_todo(text){
     let list_of_elements = create_elements('li', 'span', 'input', "button");
-    add_classes(list_of_elements);
     add_attributes(list_of_elements, text);
     const [li, ...elements] = list_of_elements;
     appendToLi(li, elements);
