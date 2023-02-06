@@ -2,6 +2,12 @@ let input_field = document.querySelector(".input-block__input-elem");
 
 // let localstorage_data = [];
 
+(function clearInputClickOnPage(){
+    document.addEventListener('click', function (event){
+        document.querySelector(".input-block__input-elem").value = "";
+    })
+})()
+
 input_field.addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
         event.preventDefault();
