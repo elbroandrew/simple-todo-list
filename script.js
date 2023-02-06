@@ -72,23 +72,34 @@ function add_classes(elements){
     }
 }
 
-function appendToLi(li, elements){
-    for (let e of elements){
+function appendToLi(li, list1){
+    for (let e of list1){
         li.appendChild(e);
     }
 }
 
+function add_attributes(elements, text){
+    for(let el of elements){
+        if(el.nodeName === "SPAN"){
+            el.innerText = text.trim();
+        }
+        else if(el.nodeName === "INPUT") {
+            el.type = "checkbox";
+            el.setAttribute("onclick", "change_todo_state(this)");
+        }
+        else if(el.nodeName === "BUTTON"){
+            el.innerText = "x";
+            el.setAttribute("onclick", "remove_todo(this)");
+        }
+    }
+}
 
 function create_todo(text){
-    const list_of_elements = create_elements('li', 'span', 'input', "button");
+    let list_of_elements = create_elements('li', 'span', 'input', "button");
     add_classes(list_of_elements);
-    const [li, span, input, button] = list_of_elements;
-    span.innerText = text.trim();
-    input.type = "checkbox";
-    input.setAttribute("onclick", "change_todo_state(this)");
-    button.innerText = "X";
-    button.setAttribute("onclick", "remove_todo(this)");
-    appendToLi(li, span, input, button)
+    add_attributes(list_of_elements, text);
+    const [li, ...elements] = list_of_elements;
+    appendToLi(li, elements);
 
     return li;
 }
