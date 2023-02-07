@@ -1,4 +1,5 @@
 ## Simple 'Todo list' project
+## To run tests: `npm test`
 
 ## _TODO_:
 - ~~BEM~~
