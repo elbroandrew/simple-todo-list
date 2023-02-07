@@ -1,6 +1,6 @@
-## simple Todo list project
+## Simple 'Todo list' project
 
-# _TODO_:
+## _TODO_:
 - ~~BEM~~
 - ~~font awesome~~
 - ~~custom markers~~
@@ -11,7 +11,13 @@
 - sass
 - ~~localStorage~~
 - ~~add new todo to localstorage~~
-- remove todo from local storage
+- ~~remove todo from local storage~~
 - github pages
 - TDD Jest
+- express server
+- MongoDB
+- Docker
+- Ansible
+- Kubernetes
+
 
