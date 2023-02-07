@@ -106,7 +106,7 @@ let obj_of_functions = {
 function setOnClickAttr(elements, obj){
     for(let el of elements){
         if (obj[el.nodeName]){
-            el.setAttribute("onclick", obj[el.nodeName] + "()");
+            el.setAttribute("onclick", obj[el.nodeName] + "(this)");
         }
     }
 }
