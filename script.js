@@ -49,63 +49,102 @@ function remove_todo(button_pressed){
 function create_elements(...tag_names_list){
     let res = [];
     for (let tag of tag_names_list){
-        res.push(document.createElement(`${tag}`));
+        res.push(document.createElement(tag));
     }
     return res;
 }
 
-function add_attributes(elements, text){
+let li_classes = [
+    "todo-container__item",
+];
+
+let span_classes = [
+    "todo-container__text",
+    "todo-container__text_state_normal",
+];
+
+let input_classes = [
+    "todo-container__checkbox",
+];
+
+let button_classes = [
+    "todo-container__button",
+    "todo-container__button_state_hidden",
+];
+
+let classes_obj = {
+    'li': li_classes,
+    'span': span_classes,
+    'input': input_classes,
+    'button': button_classes,
+}
+
+function add_classes(elements, obj){
     for (let el of elements){
         if(el.nodeName === "LI"){
-            el.classList.add("todo-container__item");
+            el.classList.add(...obj['li']);
         }
         else if(el.nodeName === "SPAN"){
-            el.classList.add("todo-container__text", "todo-container__text_state_normal");
-            el.innerText = text.trim();
+            el.classList.add(...obj['span']);
         }
         else if(el.nodeName === "INPUT") {
-            el.classList.add("todo-container__checkbox");
-            el.toggle_class = toggle_class;
-            el.type = "checkbox";
-            el.setAttribute("onclick", "change_todo_state(this)");
+            el.classList.add(...obj["input"]);
+            //el.setAttribute("onclick", "change_todo_state(this)");
         }
         else if(el.nodeName === "BUTTON"){
-            el.classList.add("todo-container__button", "todo-container__button_state_hidden");
-            el.innerText = "x";
-            el.setAttribute("onclick", "remove_todo(this)");
+            el.classList.add(...obj["button"]);
+            //el.setAttribute("onclick", "remove_todo(this)");
         }
     }
 }
 
-function appendToLi(li, list1){
-    for (let e of list1){
-        li.appendChild(e);
-    }
+let obj_of_functions = {
+    "input": change_todo_state.name,
+    "button": remove_todo.name,
 }
 
-function create_todo(text){
-    let list_of_elements = create_elements('li', 'span', 'input', "button");
-    add_attributes(list_of_elements, text);
-    const [li, ...elements] = list_of_elements;
-    appendToLi(li, elements);
+function setOnClickAttr(elements, obj){
+    elements.map( el => {
+
+    })
+    el.setAttribute("onclick", val.name + "()");
+}
+
+function appendToLi(list1){
+    let [li, ...list2] = list1;
+    for (let el of list2){
+        li.appendChild(el);
+    }
 
     return li;
 }
 
-function text_field_is_empty(txt){
-    return !!txt.trim();
-}
+function create_todo_elements(text){
+    let list_of_elements = create_elements('li', 'span', 'input', "button");
+    add_classes(list_of_elements, classes_obj);
+    const [li, span, input, button] = list_of_elements;
+    input.type = "checkbox";
+    input.toggle_class = toggle_class;
+    button.innerText = "x";
+    span.innerText = text.trim();
 
+    return list_of_elements;
+}
 
 function create_todo_from_input_field() {
     const text_field = document.querySelector('.input-block__input-elem');
     if (text_field_is_empty(text_field.value)){
-        let todo = create_todo(text_field.value)
+        let elements = create_todo_elements(text_field.value);
+        let todo = appendToLi(elements);
         text_field.value = "";
         return todo;
     }
     alert("Input field must not be empty.");
     text_field.value = "";
+}
+
+function text_field_is_empty(txt){
+    return !!txt.trim();
 }
 
 function remove_selected(){
