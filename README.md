@@ -14,11 +14,12 @@
 - ~~add new todo to localstorage~~
 - ~~remove todo from local storage~~
 - github pages
-- TDD Jest
+- TDD Mocha, Chai
+- CI/CD
 - express server
 - MongoDB
 - Docker
 - Ansible
 - Kubernetes
-
+- React, Vue, Angular
 
