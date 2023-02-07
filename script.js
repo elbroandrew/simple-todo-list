@@ -8,14 +8,6 @@
     });
 })();
 
-// (function clearInputClickOnPage(){
-//     document.addEventListener('click', function (event){
-//         document.querySelector(".input-block__input-elem").value = "";
-//     })
-// })();
-
-
-
 const add_todo = () => {
     const todo = create_todo_from_input_field();
     if (todo){
@@ -89,11 +81,9 @@ function add_classes(elements, obj){
         }
         else if(el.nodeName === "INPUT") {
             el.classList.add(...obj["input"]);
-            //el.setAttribute("onclick", "change_todo_state(this)");
         }
         else if(el.nodeName === "BUTTON"){
             el.classList.add(...obj["button"]);
-            //el.setAttribute("onclick", "remove_todo(this)");
         }
     }
 }
@@ -120,7 +110,7 @@ function appendToLi(list1){
     return li;
 }
 
-function create_todo_elements(text){
+function setup_todo_elements(text){
     let list_of_elements = create_elements('li', 'span', 'input', "button");
     add_classes(list_of_elements, classes_obj);
     const [li, span, input, button] = list_of_elements;
@@ -136,7 +126,7 @@ function create_todo_elements(text){
 function create_todo_from_input_field() {
     const text_field = document.querySelector('.input-block__input-elem');
     if (text_field_is_empty(text_field.value)){
-        let elements = create_todo_elements(text_field.value);
+        let elements = setup_todo_elements(text_field.value);
         let todo = appendToLi(elements);
         text_field.value = "";
         return todo;
