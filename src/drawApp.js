@@ -1,6 +1,6 @@
 
 
-function drawApp(el){
+export function drawApp(el){
     el.innerHTML = `
     <h1>ToDo App</h1>
     <div class="input-block">
@@ -17,4 +17,4 @@ function drawApp(el){
 
 }
 
-module.exports = { drawApp };
+// module.exports = { drawApp };

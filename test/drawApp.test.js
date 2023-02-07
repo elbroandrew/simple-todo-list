@@ -1,6 +1,6 @@
-const { drawApp } = require("../src/drawApp");
-const { JSDOM } = require("jsdom");
-let expect = require('chai').expect;
+import {drawApp} from "../src/drawApp.js";
+import { JSDOM } from "jsdom";
+import { expect } from "chai";
 
 describe("drawApp", () => {
     let el;
