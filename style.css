@@ -1,7 +1,10 @@
 body{
     margin: 0;
 }
-
+h1 {
+    position: relative;
+    right: 25rem;
+}
 ul {
     padding-inline-start: 0;
 }
