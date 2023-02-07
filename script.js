@@ -99,15 +99,16 @@ function add_classes(elements, obj){
 }
 
 let obj_of_functions = {
-    "input": change_todo_state.name,
-    "button": remove_todo.name,
+    "INPUT": change_todo_state.name,
+    "BUTTON": remove_todo.name,
 }
 
 function setOnClickAttr(elements, obj){
-    elements.map( el => {
-
-    })
-    el.setAttribute("onclick", val.name + "()");
+    for(let el of elements){
+        if (obj[el.nodeName]){
+            el.setAttribute("onclick", obj[el.nodeName] + "()");
+        }
+    }
 }
 
 function appendToLi(list1){
@@ -126,6 +127,7 @@ function create_todo_elements(text){
     input.type = "checkbox";
     input.toggle_class = toggle_class;
     button.innerText = "x";
+    setOnClickAttr(list_of_elements, obj_of_functions);
     span.innerText = text.trim();
 
     return list_of_elements;
