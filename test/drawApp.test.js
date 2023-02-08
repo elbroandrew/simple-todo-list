@@ -1,6 +1,7 @@
 import {drawApp} from "../src/drawApp.js";
 import { JSDOM } from "jsdom";
 import { expect } from "chai";
+import { assert } from "chai";
 
 describe("drawApp", () => {
     let el;
@@ -18,5 +19,10 @@ describe("drawApp", () => {
     it("draws basic markup", () => {
         expect(el.querySelector("h1")).to.be.ok;
         expect(el.querySelector("button")).to.be.ok;
+
+    });
+
+    it("verifies class name", () => {
+        expect(el.querySelectorAll("div")[0]).to.have.property("className").that.is.equal("input-block");
     });
 })

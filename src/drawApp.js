@@ -16,5 +16,3 @@ export function drawApp(el){
     `;
 
 }
-
-// module.exports = { drawApp };
