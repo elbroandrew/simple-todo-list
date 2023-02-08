@@ -10,8 +10,8 @@ export function drawApp(el){
         <ul class="todo-container__list">
         </ul>
     </div>
-    <button type="button" class="remove-todos-button" onclick="remove_all()">Remove All</button>
-    <button type="button" class="remove-selected-todos-button" onclick="remove_selected()">Remove Selected</button>
+    <button type="button" class="remove-todos-button">Remove All</button>
+    <button type="button" class="remove-selected-todos-button">Remove Selected</button>
     `;
 
 }
