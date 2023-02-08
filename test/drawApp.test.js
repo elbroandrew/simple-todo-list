@@ -1,7 +1,6 @@
 import {drawApp} from "../src/drawApp.js";
 import { JSDOM } from "jsdom";
 import { expect } from "chai";
-import { assert } from "chai";
 
 describe("drawApp", () => {
     let el;
