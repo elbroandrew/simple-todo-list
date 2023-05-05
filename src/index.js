@@ -5,14 +5,16 @@ import { removeSelected } from "./removeSelectedTodos.js";
 
 drawApp(document.querySelector(".container"));
 
-document.querySelector(".input-block__add-button-elem").addEventListener("click", () =>{
-    add_todo();
-})
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelector(".input-block__add-button-elem").addEventListener("click", () =>{
+        add_todo();
+    });
 
-document.querySelector(".remove-todos-button").addEventListener("click", () =>{
-    removeAll();
-})
+    document.querySelector(".remove-todos-button").addEventListener("click", () =>{
+        removeAll();
+    });
 
-document.querySelector(".remove-selected-todos-button").addEventListener("click", () =>{
-    removeSelected();
+    document.querySelector(".remove-selected-todos-button").addEventListener("click", () =>{
+        removeSelected();
+    });
 })
