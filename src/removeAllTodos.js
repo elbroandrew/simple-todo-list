@@ -1,5 +1,4 @@
 import { deleteAllTasks } from './api.js';
-import { renderTasks } from './renderTasks.js';
 
 
 export async function removeAll() {

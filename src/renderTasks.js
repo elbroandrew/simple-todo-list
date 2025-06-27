@@ -1,35 +1,25 @@
-import { deleteTask, updateTask } from './api.js';
+import { deleteTask } from './api.js';
+import { setupTaskUpdate } from './updateTask.js';
+
 
 export function renderTasks(tasks) {
   const list = document.querySelector('.todo-container__list');
   
   list.innerHTML = tasks.map(task => `
-    <li class="task-item" data-id="${task.id}">
+    <li class="task-item" data-id="${task.ID}">
       <input 
         type="checkbox" 
         class="task-checkbox" 
         ${task.completed ? 'checked' : ''}
       >
-      <span class="${task.completed ? 'completed' : ''}">${task.title}</span>
+      <span class="task-title ${task.completed ? 'completed' : ''}">${task.title}</span>
       <button class="delete-task-btn">
         <i class="fas fa-trash"></i>
       </button>
     </li>
   `).join('');
 
-  // Добавляем обработчики событий
-  document.querySelectorAll('.task-checkbox').forEach(checkbox => {
-    checkbox.addEventListener('change', async (e) => {
-      const taskId = e.target.closest('.task-item').dataset.id;
-      try {
-        await updateTask(taskId, e.target.checked);
-        e.target.nextElementSibling.classList.toggle('completed');
-      } catch (error) {
-        e.target.checked = !e.target.checked; // Откатываем изменение
-        alert('Failed to update task');
-      }
-    });
-  });
+  setupTaskUpdate();
 
   document.querySelectorAll('.delete-task-btn').forEach(btn => {
     btn.addEventListener('click', async (e) => {

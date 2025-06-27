@@ -58,5 +58,6 @@ export async function deleteAllTasks() {
 
 // Обновление статуса задачи
 export async function updateTask(id, completed) {
+   if (!id) throw new Error('Task ID is required!');
   return makeRequest('PUT', `/tasks/${id}`, { completed });
 }
