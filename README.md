@@ -1,25 +1,10 @@
-## Simple 'Todo list' project
-## To run tests: `npm test`
+## Simple 'Todo list' 
 
-## _TODO_:
-- ~~BEM~~
-- ~~font awesome~~
-- ~~custom markers~~
-- unselect all button
-- adaptive/responsive
-- ~~simple backend~~
-- rollup/webpack
-- sass
-- ~~localStorage~~
-- ~~add new todo to localstorage~~
-- ~~remove todo from local storage~~
-- github pages
-- TDD Mocha, Chai
-- CI/CD
-- express server
-- MongoDB
-- Docker
-- Ansible
-- Kubernetes
-- React, Vue, Angular
+## Запуск экспресс сервера, который будет отдавать фронтенд файлы:
+
+`npm install`
+
+`node serve.js`
+
+`Зайти на http://localhost:3000/`
 
