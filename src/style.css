@@ -308,8 +308,32 @@ h1 {
 }
 
 #logoutBtn {
-  padding: 5px 10px;
-  background: #f44336;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+#logoutBtn:hover {
+  background-color: #d32f2f;
+  transform: translateY(-1px);
+  box-shadow: var(--box-shadow);
+}
+
+#logoutBtn i {
+  font-size: 1.1em;
+  transition: transform 0.2s ease;
+}
+
+#logoutBtn:hover i {
+  transform: scale(1.1);
 }
 
 .completed {
