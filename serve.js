@@ -15,8 +15,14 @@ const API_URL = 'http://localhost:8080'; // Go-бэкенд
 // Опция 2: Разрешить доступ с конкретного источника (например, ваш фронтенд на другом порту)
 // Предположим, ваш фронтенд (который может быть отдельным приложением или даже клиентом)
 // запущен на http://localhost:3000.
+
+const allowedOrigins = [
+  'http://localhost:3000',
+  'http://localhost:8080',
+];
+
 const corsOptions = {
-  origin: 'http://localhost:3000', // Укажите URL вашего фронтенда
+  origin: allowedOrigins, // Укажите URL вашего фронтенда
   optionsSuccessStatus: 200, // Для старых браузеров
   credentials: true
 };

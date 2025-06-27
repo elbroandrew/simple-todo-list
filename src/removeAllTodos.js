@@ -1,3 +1,16 @@
-export function removeAll(){
-    console.log("REMOVE ALL.")
+import { deleteAllTasks } from './api.js';
+import { renderTasks } from './renderTasks.js';
+
+
+export async function removeAll() {
+  if (!confirm('Are you sure you want to delete ALL tasks?')) return;
+  
+  try {
+    await deleteAllTasks();
+    // Очищаем список
+    document.querySelector('.todo-container__list').innerHTML = '';
+  } catch (error) {
+    console.error('Delete all error:', error);
+    alert('Failed to delete all tasks');
+  }
 }
