@@ -32,7 +32,7 @@ app.use(cookieParser());
 app.use(express.json());
 
 // --- Сервирование статических файлов ---
-// Express будет искать файлы в папке 'src' для обслуживания
+// Express будет искать файлы в папке 'src' 
 app.use(express.static(path.join(__dirname, 'src')));
 
 // Прокси для API запросов

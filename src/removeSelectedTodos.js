@@ -1,4 +1,3 @@
-// src/removeSelectedTodos.js
 import { deleteTask } from './api.js';
 
 export async function removeSelected() {

@@ -1,7 +1,7 @@
 const API_URL = 'http://localhost:8080'; // URL Go-бэкенда
 
 // Общая функция для API запросов
-async function makeRequest(method, endpoint, data = null) {
+export async function makeRequest(method, endpoint, data = null) {
   const config = {
     method,
     headers: {
@@ -15,24 +15,25 @@ async function makeRequest(method, endpoint, data = null) {
     config.body = JSON.stringify(data);
   }
 
-  try {
-    const response = await fetch(`${API_URL}${endpoint}`, config);
-    
-    // Обновляем access token если он пришел
-    const newAccessToken = response.headers.get('New-Access-Token');
-    if (newAccessToken) {
-      localStorage.setItem('accessToken', newAccessToken);
-    }
-
-    if (!response.ok) {
-      throw new Error(await response.text());
-    }
-
-    return await response.json();
-  } catch (error) {
-    console.error(`API Error (${method} ${endpoint}):`, error);
-    throw error;
+  const response = await fetch(`${API_URL}${endpoint}`, config);
+  
+  // Обновляем access token если он пришел
+  const newAccessToken = response.headers.get('New-Access-Token');
+  if (newAccessToken) {
+    localStorage.setItem('accessToken', newAccessToken);
   }
+
+  if (response.status === 401) {
+    // Перенаправляем на страницу логина
+    window.location.href = '/login.html';
+    throw new Error('Unauthorized');
+  }
+
+  if (!response.ok) {
+    throw new Error(await response.text());
+  }
+
+  return await response.json();
 }
 
 // Получение всех задач
