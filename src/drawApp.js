@@ -1,6 +1,7 @@
 import { getTasks } from './api.js';
 import { renderTasks } from './renderTasks.js';
 import { isAuthenticated } from './auth.js';
+import { logout } from './auth.js';
 
 export function drawApp(el) {
   if (!isAuthenticated()) {

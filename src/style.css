@@ -281,18 +281,22 @@ h1 {
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 5px;
+  box-sizing: border-box; /* Чтобы padding не влиял на общую ширину */
 }
 
 .login-container input {
   display: block;
-  width: 100%;
+  width: calc(100% - 16px); /* Учитываем padding */
   margin: 10px 0;
   padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }
 
 .login-container button {
   width: 100%;
   padding: 10px;
+  margin-top: 10px; /* Добавляем отступ сверху */
   background: #4CAF50;
   color: white;
   border: none;
