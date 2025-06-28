@@ -28,7 +28,10 @@ export function setupTaskUpdate() {
         // Откат при ошибке
         e.target.checked = !isCompleted;
         textSpan.classList.toggle('completed', !isCompleted);
-        alert('Ошибка обновления задачи');
+        if (error.message.includes("Задача не найдена")){
+          taskItem.remove();
+        }
+        alert(error.message || 'Ошибка обновления задачи');
       }
     });
   });

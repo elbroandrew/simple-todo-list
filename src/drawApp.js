@@ -2,6 +2,7 @@ import { getTasks } from './api.js';
 import { renderTasks } from './renderTasks.js';
 import { isAuthenticated } from './auth.js';
 import { logout } from './auth.js';
+import { showToast } from './showToast.js';
 
 export function drawApp(el) {
   if (!isAuthenticated()) {
@@ -47,6 +48,7 @@ export function drawApp(el) {
   
   // Загружаем и отображаем задачи
   loadAndRenderTasks();
+  showToast("Ваши текущие задачи")
 }
 
 async function loadAndRenderTasks() {

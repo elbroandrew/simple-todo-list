@@ -1,4 +1,5 @@
 import { makeRequest } from './api.js';
+import { showToast } from './showToast.js';
 
 export async function login(email, password) {
   try {
@@ -7,6 +8,7 @@ export async function login(email, password) {
     return response.user;
   } catch (error) {
     console.error('Login failed:', error);
+    showToast("Login failed. Please check your credentials.");
     throw error;
   }
 }
@@ -17,6 +19,7 @@ export async function logout() {
     localStorage.removeItem('accessToken');
   } catch (error) {
     console.error('Logout failed:', error);
+    showToast("Logout failed");
     throw error;
   }
 }

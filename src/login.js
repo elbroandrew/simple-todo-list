@@ -1,4 +1,5 @@
 import { login } from './auth.js';
+import { showToast } from './showToast.js';
 
 document.getElementById('loginForm').addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -10,6 +11,6 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
     await login(email, password);
     window.location.href = '/'; // Перенаправляем на главную после успешного входа
   } catch (error) {
-    alert('Login failed. Please check your credentials.');
+    showToast("Login failed. Please check your credentials.");
   }
 });
