@@ -24,13 +24,21 @@ export function renderTasks(tasks) {
 
   document.querySelectorAll('.delete-task-btn').forEach(btn => {
     btn.addEventListener('click', async (e) => {
-      const taskId = e.target.closest('.task-item').dataset.id;
+      const taskItem = e.target.closest('.task-item');
+      const taskId = taskItem.dataset.id;
+      const taskTitle = taskItem.querySelector('span').textContent;
       if (confirm('Delete this task?')) {
         try {
-          await deleteTask(taskId);
-          e.target.closest('.task-item').remove();
+          const res = await deleteTask(taskId);
+          if (res && res.status === 'success'){
+            taskItem.remove();
+            showToast(`Задача "${taskTitle}" удалена`);
+          }else{
+            showToast("Неожиданный ответ от сервера");
+            throw new Error("Unexpected response from server.")
+          }
         } catch (error) {
-          showToast('Failed to delete task');
+          showToast(`Не удалось удалить задачу ${taskTitle}`);
         }
       }
     });

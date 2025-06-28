@@ -29,8 +29,18 @@ export async function makeRequest(method, endpoint, data = null) {
     throw new Error('Unauthorized');
   }
 
+   // Для DELETE запросов с кодом 204 не пытаемся парсить JSON
+  if (method === 'DELETE' && response.status === 204) {
+    return { status: 'success' };
+  }
+
   if (!response.ok) {
     throw new Error(await response.text());
+  }
+
+  // Для пустых ответов с кодом 200
+  if (response.status === 200 && response.headers.get('content-length') === '0') {
+    return { status: 'success' };
   }
 
   return await response.json();
