@@ -1,4 +1,5 @@
 import { deleteTask } from './api.js';
+import { showToast } from './showToast.js';
 
 export async function removeSelected() {
   const selected = Array.from(
@@ -6,7 +7,7 @@ export async function removeSelected() {
   );
   
   if (selected.length === 0) {
-    alert('No tasks selected');
+    showToast('No tasks selected');
     return;
   }
   
@@ -29,6 +30,6 @@ export async function removeSelected() {
     
   } catch (error) {
     console.error('Delete selected error:', error);
-    alert('Failed to delete selected tasks');
+    showToast('Failed to delete selected tasks');
   }
 }

@@ -1,4 +1,6 @@
 import { updateTask } from './api.js';
+import { showToast } from './showToast.js';
+
 
 export function setupTaskUpdate() {
   document.querySelectorAll('.task-checkbox').forEach(checkbox => {
@@ -12,6 +14,7 @@ export function setupTaskUpdate() {
       const taskId = taskItem.dataset.id;
       if (!taskId) {
         console.error('ID задачи не определен!');
+        showToast("Неверный ID задачи")
         return;
       }
 
@@ -31,7 +34,7 @@ export function setupTaskUpdate() {
         if (error.message.includes("Задача не найдена")){
           taskItem.remove();
         }
-        alert(error.message || 'Ошибка обновления задачи');
+        showToast(error.message || 'Ошибка обновления задачи');
       }
     });
   });

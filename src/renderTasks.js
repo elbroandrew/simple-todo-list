@@ -1,5 +1,6 @@
 import { deleteTask } from './api.js';
 import { setupTaskUpdate } from './updateTask.js';
+import { showToast } from './showToast.js';
 
 
 export function renderTasks(tasks) {
@@ -29,7 +30,7 @@ export function renderTasks(tasks) {
           await deleteTask(taskId);
           e.target.closest('.task-item').remove();
         } catch (error) {
-          alert('Failed to delete task');
+          showToast('Failed to delete task');
         }
       }
     });

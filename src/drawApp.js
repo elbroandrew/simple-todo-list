@@ -57,6 +57,6 @@ async function loadAndRenderTasks() {
     renderTasks(tasks);
   } catch (error) {
     console.error('Failed to load tasks:', error);
-    alert('Failed to load tasks. Please try again.');
+    showToast('Failed to load tasks. Please try again.');
   }
 }

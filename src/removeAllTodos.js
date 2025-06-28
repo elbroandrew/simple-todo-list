@@ -1,4 +1,5 @@
 import { deleteAllTasks } from './api.js';
+import { showToast } from './showToast.js';
 
 
 export async function removeAll() {
@@ -10,6 +11,6 @@ export async function removeAll() {
     document.querySelector('.todo-container__list').innerHTML = '';
   } catch (error) {
     console.error('Delete all error:', error);
-    alert('Failed to delete all tasks');
+    showToast('Failed to delete all tasks');
   }
 }
